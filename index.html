@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Saki Deck</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="page">
+            <div class="left">
+                    <H1>Saki Deck</H1>
+                    <label for="NOC">Number of Cards:</label>
+                    <input type="number" class="numberOfCards" value="5">
+                    <div class="flexrow">
+                        <button class="Deal" onclick="deal()">Deal</button>
+                        <button class="resetDeck" onclick="reset()">Reset</button>
+                    </div>
+                        <h2>Draw 1</h2>
+                    <div class="flexrow">
+                        <button class="Draw" onclick="draw('East')">East</button>
+                        <button class="Draw" onclick="draw('South')">South</button>
+                        <button class="Draw" onclick="draw('West')">West</button>
+                        <button class="Draw" onclick="draw('North')">North</button>
+
+                    </div>
+                    <h2>Select Card</h2>
+                    <input type="text" class="discardCard" placeholder="Card Name">
+                    <div class="flexrow">
+                        <button class="discard" onclick="discard()">Discard</button>
+                        <button class="returning" onclick="returning()">Return</button>
+                    </div>
+            </div>
+            <div class="right">
+                    <h2>Decks</h2>
+                    <p class="copypasta"></p>
+                    <h2>Discard Pile</h2>
+                    <p class="discardpile"></p>
+                    <h2>Remaining</h2>
+                    <p class="remainingpile"></p>
+                </div>
+            </div>
+        </div>
+    <script src="sakidraw.js"></script>
+    </body>
+</html>

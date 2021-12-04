@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Saki Draw</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="page">
+            <div class="popUp">
+                <div class="copypasta"></div>
+            </div>
+            <H1>Saki Draw</H1>
+                <label for="NOC">Number of Cards:</label>
+                <input type="number" class="numberOfCards" value="5">
+                <div class="flexrow">
+                    <button class="Deal" onclick="deal()">Deal</button>
+                    <button class="resetDeck" onclick="reset()">Reset</button>
+                </div>
+                    <h2>Draw 1</h2>
+                <div class="flexrow">
+                    <button class="Draw" onclick="draw('east')">East</button>
+                    <button class="Draw" onclick="draw('south')">South</button>
+                    <button class="Draw" onclick="draw('west')">West</button>
+                    <button class="Draw" onclick="draw('north')">North</button>
+
+                </div>
+                <h2>Select Card</h2>
+                <input type="text" class="discardCard" placeholder="Card Name">
+                <div class="flexrow">
+                    <button class="discard" onclick="discard()">Discard</button>
+                    <button class="returning" onclick="returning()">Return</button>
+
+                </div>
+                <button class="copy" onclick="popup()">Copy</button>
+                <p class="displayer"></p>
+                <h2>Discard Pile</h2>
+                <p class="discardpile"></p>
+                <h2>Remaining</h2>
+                <p class="remainingpile"></p>
+                
+            </div>
+        </div>
+    <script src="sakidraw.js"></script>
+    </body>
+</html>
