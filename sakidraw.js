@@ -97,7 +97,7 @@ function reset(){
 function maketext(){
     let text = ""
     for(let x in hands){
-        text += x + " seat <br>"
+        text += x + " seat<br>"
         for(let y of hands[x]){
             let g = imglinks[y]
             text += y + ": " + g + "<br>"
