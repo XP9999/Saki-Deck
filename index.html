@@ -12,22 +12,22 @@
                     <label for="NOC">Number of Cards:</label>
                     <input type="number" class="numberOfCards" value="5">
                     <div class="flexrow">
-                        <button class="Deal" onclick="deal()">Deal</button>
-                        <button class="resetDeck" onclick="reset()">Reset</button>
+                        <button class="Deal" onclick="deal() ;  updateText()">Deal</button>
+                        <button class="resetDeck" onclick="reset() ;  updateText()">Reset</button>
                     </div>
                         <h2>Draw 1</h2>
                     <div class="flexrow">
-                        <button class="Draw" onclick="draw('East')">East</button>
-                        <button class="Draw" onclick="draw('South')">South</button>
-                        <button class="Draw" onclick="draw('West')">West</button>
-                        <button class="Draw" onclick="draw('North')">North</button>
+                        <button class="Draw" onclick="draw('East') ;  updateText()">East</button>
+                        <button class="Draw" onclick="draw('South ;  updateText()')">South</button>
+                        <button class="Draw" onclick="draw('West ;  updateText()')">West</button>
+                        <button class="Draw" onclick="draw('North ;  updateText()')">North</button>
 
                     </div>
                     <h2>Select Card</h2>
                     <input type="text" class="discardCard" placeholder="Card Name">
                     <div class="flexrow">
-                        <button class="discard" onclick="discard()">Discard</button>
-                        <button class="returning" onclick="returning()">Return</button>
+                        <button class="discard" onclick="discard() ;  updateText()">Discard</button>
+                        <button class="returning" onclick="returning() ;  updateText()">Return</button>
                     </div>
             </div>
             <div class="right">
