@@ -106,7 +106,7 @@ function maketext(){
     }
     return text
 }
-setInterval(function(){ update() });
+setInterval(function(){ update() },500);
 
 function update(){
         NOC = document.getElementsByClassName("numberOfCards")[0].value;
