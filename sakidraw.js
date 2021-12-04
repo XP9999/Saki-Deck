@@ -111,11 +111,10 @@ setInterval(function(){ update() },500);
 function update(){
         NOC = document.getElementsByClassName("numberOfCards")[0].value;
         discardCard = document.getElementsByClassName('discardCard')[0].value;
+}
 
-        if(temporary != hands){
-        document.getElementsByClassName("copypasta")[0].innerHTML = maketext();
-        document.getElementsByClassName("remainingpile")[0].innerHTML = currentDeck
-        document.getElementsByClassName("discardpile")[0].innerHTML = discardpile
-        temporary = currentDeck
-        }
+function updateText(){
+    document.getElementsByClassName("copypasta")[0].innerHTML = maketext();
+    document.getElementsByClassName("remainingpile")[0].innerHTML = currentDeck
+    document.getElementsByClassName("discardpile")[0].innerHTML = discardpile
 }
