@@ -51,6 +51,9 @@ var NOC , discardCard , reply , temporary
 let discardpile = []
 let ranInt
 let hands = {East:[],South:[],West:[],North:[]}
+document.getElementsByClassName("copypasta")[0].innerHTML = maketext();
+document.getElementsByClassName("remainingpile")[0].innerHTML = currentDeck
+document.getElementsByClassName("discardpile")[0].innerHTML = discardpile
 
 function deal(){
     for(let x in hands){
