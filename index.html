@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body onload="updateText()">
+        <div class="tooltipTrigger"><div class="tooltip"></div></div>
         <div class="page">
             <div class="left">
                     <H1>Saki Deck</H1>
@@ -13,7 +14,9 @@
                     <input type="number" class="numberOfCards" value="5">
                     <div class="flexrow">
                         <button class="Deal" onclick="deal() ;  updateText()">Deal</button>
-                        <button class="resetDeck" onclick="reset() ;  updateText()">Reset</button>
+                        <button class="resetDeck" onclick="reset()">Reset</button>
+                        <button class="returnSwitch" onclick="returnSwitch()">Return Mode</button>
+                        <button class="returnAll" onclick="returnAll() ; updateText()">Return All</button>
                     </div>
                         <h2>Draw 1</h2>
                     <div class="flexrow">
@@ -23,18 +26,28 @@
                         <button class="Draw" onclick="draw('North') ;  updateText()">North</button>
 
                     </div>
-                    <h2>Select Card</h2>
-                    <input type="text" class="discardCard" placeholder="Card Name">
+                    <h2>Draw Selected Card</h2>
+                    <input type="text" class="selectCard" placeholder="Card Name">
                     <div class="flexrow">
-                        <button class="discard" onclick="discard() ;  updateText()">Discard</button>
-                        <button class="returning" onclick="returning() ;  updateText()">Return</button>
+                        <button class="Draw" onclick="draww('East') ;  updateText()">East</button>
+                        <button class="Draw" onclick="draww('South') ;  updateText()">South</button>
+                        <button class="Draw" onclick="draww('West') ;  updateText()">West</button>
+                        <button class="Draw" onclick="draww('North') ;  updateText()">North</button>
                     </div>
+                    <h2>Extras</h2>
+                    <button onclick="maho() ; updateText()">Draw 2 new cards for Maho</button>
+                    <button onclick="rushMode() ; updateText()">Rush Mode</button>
             </div>
             <div class="right">
                     <h2>Hands</h2>
-                    <p class="copypasta"></p>
-                    <h2>Discards</h2>
-                    <p class="discardpile"></p>
+                    <div class="copypasta"></div>
+                    <h2>Yumeno Maho's Cards</h2>
+                    <div class="mahoCard">
+                        <h3>Maho's Draw</h3>
+                        <div class="mahoDrawn"></div>
+                        <h3>Maho's Discarded</h3>
+                        <div class="mahoDiscarded"></div>
+                    </div>
                     <h2>Remaining</h2>
                     <p class="remainingpile"></p>
                 </div>
@@ -43,3 +56,4 @@
     <script src="sakidraw.js"></script>
     </body>
 </html>
+
