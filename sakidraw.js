@@ -192,7 +192,7 @@ function rushMode(){
 function maketext(){
     copypasta.innerHTML = ""
     for(let x in hands){
-        let seat = document.createElement('p')
+        let seat = document.createElement('div')
         seat.innerHTML = x + ": "
         copypasta.appendChild(seat)
         for(let y of hands[x]){
