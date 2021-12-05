@@ -47,74 +47,200 @@ const imglinks ={
     'Yumeno Maho':"https://i.imgur.com/NxbBN47.png"
 }
 let currentDeck = [...deck]
-var NOC , discardCard , reply , temporary
+let empty = []
+let mahoHand =  []
+let mahoDiscard = []
+var NOC , discardCard
 let discardpile = []
+let check = false
 let ranInt
 let hands = {East:[],South:[],West:[],North:[]}
+let returnMode = false
+let copypasta = document.getElementsByClassName("copypasta")[0]
+let c = document.getElementsByClassName("copypasta")[0].children
+let cards = document.getElementsByClassName("cards")
 
 function deal(){
     for(let x in hands){
         for(let g = 0 ; g < NOC ; g++){
-          ranInt = Math.floor(Math.random() * currentDeck.length);
-          hands[x].push(currentDeck[ranInt])
-          currentDeck.splice(ranInt,1)
+            
+            ranInt = Math.floor(Math.random() * currentDeck.length);
+            hands[x].push(currentDeck[ranInt])
+            currentDeck.splice(ranInt,1)
         }
-    }
-}
-function discard(){
-    for(let y in hands){
-            if(hands[y].includes(discardCard)){
-                hands[y].splice(hands[y].indexOf(discardCard),1)
-                discardpile.push(discardCard)
-            }
-            document.getElementsByClassName('discardCard')[0].value = ""
     }
 }
 
-function returning(){
-    for(let y in hands){
-        if(hands[y].includes(discardCard)){
-            hands[y].splice(hands[y].indexOf(discardCard),1)
-            currentDeck.push(discardCard)
-            
-        }
-        document.getElementsByClassName('discardCard')[0].value = ""
-    }   
-}
 function draw(x){
+    
     ranInt = Math.floor(Math.random() * currentDeck.length);
     hands[x].push(currentDeck[ranInt]);
     currentDeck.splice(ranInt,1)
 }
 
+// draw selected card
+function draww(x){
+    if(currentDeck.includes(selectCard)){
+        hands[x].push(currentDeck[currentDeck.indexOf(selectCard)]);
+        currentDeck.splice(currentDeck.indexOf(selectCard),1)
+    }
+    if(mahoHand.includes(selectCard)){
+        hands[x].push(mahoHand[mahoHand.indexOf(selectCard)]);
+        mahoHand.splice(mahoHand.indexOf(selectCard),1)
+    }
+    if(mahoDiscard.includes(selectCard)){
+        hands[x].push(mahoHand[mahoDiscard.indexOf(selectCard)]);
+        mahoDiscard.splice(mahoDiscard.indexOf(selectCard),1)
+    }
+}
+
 function reset(){
-    currentDeck = [...deck] ; 
-    discardpile = []
-    hands = {East:[],South:[],West:[],North:[]}
+    if(check){
+        currentDeck = [...deck] ; 
+        discardpile = []
+        hands = {East:[],South:[],West:[],North:[]}
+        mahoHand =  []
+        mahoDiscard = []
+        document.getElementsByClassName('resetDeck')[0].style.background = "transparent"
+        check = false
+        updateText();
+    }
+    else{
+        check = true
+        document.getElementsByClassName('resetDeck')[0].style.background = "rgb(46, 45, 45)"
+    }
 }
 
 
-function maketext(){
-    let text = ""
+function returnSwitch(){
+    if(returnMode){
+        returnMode = false
+        document.getElementsByClassName('returnSwitch')[0].style.background = "transparent";
+
+    }
+    else{
+        returnMode = true
+        document.getElementsByClassName('returnSwitch')[0].style.background = "rgb(46, 45, 45)"
+    }
+    updateText();
+}
+// remove the node , remove the card from hand and put it into current deck
+function returning(){
+    if(returnMode){
+        let name = this.innerHTML
+        let g = name.split(":")
+        currentDeck.push(g[0])
+        for(let x in hands){
+            for(let y of hands[x]){
+                if(y == g[0]){
+                    hands[x].splice(hands[x].indexOf(y),1)
+                }
+            }
+        }
+        document.getElementById(this.id).remove();
+        updateText();
+    }
+}
+
+// return all cards to current deck except maho's
+function returnAll(){
     for(let x in hands){
-        text += x + " seat<br>"
         for(let y of hands[x]){
-            let g = imglinks[y]
-            text += y + ": " + g + "<br>"
-            
+                currentDeck.push(y)
+                
+            }
+        }
+    hands = {East:[],South:[],West:[],North:[]} 
+    if([...mahoHand] != []){
+        mahoDiscard = mahoDiscard.concat(mahoHand)
+        mahoHand = []
+    }
+}
+
+function maho(){
+    
+    if([...mahoHand] != []){
+        mahoDiscard = mahoDiscard.concat(mahoHand)
+        mahoHand = []
+    }
+    for(let x = 0 ; x < 2 ; x++){
+    ranInt = Math.floor(Math.random() * currentDeck.length);
+    mahoHand.push(currentDeck[ranInt]);
+    currentDeck.splice(ranInt,1)
+    }
+}
+
+function rushMode(){
+    for(let x in hands){
+        for(let y of hands[x]){
+                currentDeck.push(y)
+                
+            }
+        }
+    hands = {East:[],South:[],West:[],North:[]} 
+
+    for(let x in hands){
+        for(let g = 0 ; g < 2 ; g++){
+          
+          ranInt = Math.floor(Math.random() * currentDeck.length);
+          hands[x].push(currentDeck[ranInt])
+          currentDeck.splice(ranInt,1)
         }
     }
-    return text
+    if([...mahoHand] != []){
+        mahoDiscard = mahoDiscard.concat(mahoHand)
+        mahoHand = []
+    }
+}
+// despite the name it actually make nodes
+function maketext(){
+    copypasta.innerHTML = ""
+    for(let x in hands){
+        let seat = document.createElement('p')
+        seat.innerHTML = x + ": "
+        copypasta.appendChild(seat)
+        for(let y of hands[x]){
+            let g = imglinks[y]
+            let card = document.createElement("div")
+            card.innerHTML = y + ": " + g
+            card.className = "cards"
+            copypasta.appendChild(card)
+        }
+    }
+}
+function mahoInfo(){
+    document.getElementsByClassName('mahoDrawn')[0].innerHTML = ""
+    document.getElementsByClassName('mahoDiscarded')[0].innerHTML = ""
+    for(let y of mahoHand){
+        let g = imglinks[y]
+        let card = document.createElement("div")
+        card.innerHTML = y + ": " + g
+        document.getElementsByClassName('mahoDrawn')[0].appendChild(card)
+    }
+    for(let y of mahoDiscard){
+        let g = imglinks[y]
+        let card = document.createElement("div")
+        card.innerHTML = y + ": " + g
+        document.getElementsByClassName('mahoDiscarded')[0].appendChild(card)
+    }
 }
 setInterval(function(){ update() },500);
 
 function update(){
         NOC = document.getElementsByClassName("numberOfCards")[0].value;
-        discardCard = document.getElementsByClassName('discardCard')[0].value;
+        selectCard = document.getElementsByClassName('selectCard')[0].value;
 }
 
 function updateText(){
-    document.getElementsByClassName("copypasta")[0].innerHTML = maketext();
+    maketext();
+    mahoInfo();
     document.getElementsByClassName("remainingpile")[0].innerHTML = currentDeck
-    document.getElementsByClassName("discardpile")[0].innerHTML = discardpile
+    for(let i = 0 ; i < cards.length ;i++){
+        cards[i].id = i
+        cards[i].addEventListener("click", returning)
+        }
+        document.getElementsByClassName('resetDeck')[0].style.background = "transparent"
+        check = false
+    
 }
+
