@@ -80,6 +80,6 @@ button:active{
     flex-direction: column;
     }
     .left , .right{
-    width: 100%
+    width: 100%;
     }
 }
