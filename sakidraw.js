@@ -63,8 +63,10 @@ let cards = document.getElementsByClassName("cards")
 function deal(){
     for(let x in hands){
         for(let g = 0 ; g < NOC ; g++){
-            
             ranInt = Math.floor(Math.random() * currentDeck.length);
+            if(currentDeck[ranInt] == undefined){
+                return
+            }
             hands[x].push(currentDeck[ranInt])
             currentDeck.splice(ranInt,1)
         }
@@ -74,6 +76,9 @@ function deal(){
 function draw(x){
     
     ranInt = Math.floor(Math.random() * currentDeck.length);
+    if(currentDeck[ranInt] == undefined){
+        return
+    }
     hands[x].push(currentDeck[ranInt]);
     currentDeck.splice(ranInt,1)
 }
@@ -161,6 +166,9 @@ function maho(){
     }
     for(let x = 0 ; x < 2 ; x++){
     ranInt = Math.floor(Math.random() * currentDeck.length);
+    if(currentDeck[ranInt] == undefined){
+        return
+    }
     mahoHand.push(currentDeck[ranInt]);
     currentDeck.splice(ranInt,1)
     }
@@ -239,4 +247,3 @@ function updateText(){
         check = false
     
 }
-
