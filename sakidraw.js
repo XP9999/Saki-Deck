@@ -151,10 +151,6 @@ function returnAll(){
             }
         }
     hands = {East:[],South:[],West:[],North:[]} 
-    if([...mahoHand] != []){
-        mahoDiscard = mahoDiscard.concat(mahoHand)
-        mahoHand = []
-    }
 }
 
 function maho(){
