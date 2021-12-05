@@ -37,34 +37,41 @@ input{
 }
 
 button{
-    width: 75px;
+    min-width: 75px;
     height: 30px;
     background: transparent;
     border: black 1px solid;
 }
 button:active{
-    width: 75px;
+    min-width: 75px;
     height: 30px;
+    background: rgb(46, 45, 45);
+    border: black 1px solid;
+}
+.copypasta > *{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.copypasta > div {
+    padding: 0%;
+    border: none;
     background: transparent;
-    border: black 2px solid;
+}
+.copypasta >div:hover {
+    padding: 0%;
+    border: none;
+    background: gray;
+}
+.copypasta >div:active {
+    padding: 0%;
+    border: none;
+    background: rgb(46, 45, 45);
 }
 
 .flexrow{
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.popUp{
-    border: black 3px ridge;
-    background: lightblue;
-    border-radius: 15px;
-    display: none;
-    width: fit-content;
-    height: fit-content;
-    margin-left: 80px;
-    border: none;
-    position: absolute;
-    z-index: 1;
-    text-align: center;
 }
