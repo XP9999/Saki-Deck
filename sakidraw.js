@@ -89,7 +89,7 @@ function draww(x){
         mahoHand.splice(mahoHand.indexOf(selectCard),1)
     }
     if(mahoDiscard.includes(selectCard)){
-        hands[x].push(mahoHand[mahoDiscard.indexOf(selectCard)]);
+        hands[x].push(mahoDiscard[mahoDiscard.indexOf(selectCard)]);
         mahoDiscard.splice(mahoDiscard.indexOf(selectCard),1)
     }
 }
