@@ -112,7 +112,7 @@ function reset(){
     }
     else{
         check = true
-        document.getElementsByClassName('resetDeck')[0].style.background = "rgb(46, 45, 45)"
+        document.getElementsByClassName('resetDeck')[0].style.background = "#808080"
     }
 }
 
