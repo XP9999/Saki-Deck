@@ -83,3 +83,23 @@ button:active{
     width: 100%;
     }
 }
+
+.sakiDiscord{
+    margin-top: auto;
+    max-height: 30px;
+    max-width: 100%;
+}
+a{
+    color: black;
+    font-size: 1.25em;
+    text-decoration: none;
+}
+
+.image{
+    height: 30px;
+    width: 30px;
+    background-image: url("https://cdn.discordapp.com/attachments/909080540886495264/917200799887683604/kisspng-discord-computer-icons-teamspeak-logo-chat-room-logo-5ae0cad9b685b7.0678409915246814337476.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -3px;
+}
