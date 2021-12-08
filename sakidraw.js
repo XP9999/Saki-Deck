@@ -130,10 +130,9 @@ function returnSwitch(){
     updateText();
 }
 // remove the node , remove the card from hand and put it into current deck
-function returning(){
+function returning(lmao){
     if(returnMode){
-        let name = this.innerHTML
-        let g = name.split(":")
+        let g = lmao.target.innerHTML.split(":")
         currentDeck.push(g[0])
         for(let x in hands){
             for(let y of hands[x]){
@@ -142,7 +141,7 @@ function returning(){
                 }
             }
         }
-        document.getElementById(this.id).remove();
+        lmao.target.remove();
         updateText();
     }
 }
@@ -240,10 +239,10 @@ function updateText(){
     mahoInfo();
     document.getElementsByClassName("remainingpile")[0].innerHTML = currentDeck
     for(let i = 0 ; i < cards.length ;i++){
-        cards[i].id = i
         cards[i].addEventListener("click", returning)
         }
         document.getElementsByClassName('resetDeck')[0].style.background = "transparent"
         check = false
     
 }
+
