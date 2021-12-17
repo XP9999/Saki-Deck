@@ -6,11 +6,26 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body onload="updateText()">
-        <div class="tooltipTrigger"><div class="tooltip"></div></div>
         <div class="page">
+            <div class="gamemode">
+                <H1>Select Gamemode</H1>
+                <div class="flexrow">
+                    <button class="tonpuusen" onclick="tonpuusen()">Tonpuusen</button>
+                    <button class="hanchan" onclick="hanchan()">Hanchan</button>
+                </div>
+                <div class="flexrow">
+                    <button class="sanma" onclick="sanma()">Sanma</button>
+                    <button class="suuma" onclick="suuma()">Suuma</button>
+                </div>
+                <div class="flexrow">
+                    <button class="confirmGamemode" onclick="confirm()">Confirm</button>
+                    <button class="back" onclick="back()">Back</button>
+                </div>
+                <div>Changing Gamemode will reset everything</div>
+            </div>
             <div class="left">
                     <H1>Saki Deck</H1>
-                    <label for="NOC">Number of Cards:</label>
+                    <label for="NOC">Number of Cards</label>
                     <input type="number" class="numberOfCards" value="5">
                     <div class="flexrow">
                         <button class="Deal" onclick="deal() ;  updateText()">Deal</button>
@@ -36,8 +51,10 @@
                     </div>
                     <p>If u need to move card from maho to deck, draw from selected card and use return mode</p>
                     <h2>Extras</h2>
+                    <button class="openGamemode" onclick="openGamemode()">Change Gamemode</button>
                     <button onclick="maho() ; updateText()">Draw 2 new cards for Maho</button>
                     <button onclick="rushMode() ; updateText()">Rush Mode</button>
+                    <button class = "embedCards" onclick="embedCardCheck() ; updateText()">Embed Cards</button>
                     <div class="sakiDiscord">
                         <div class="flexrow">
                             <div class="image"></div>
