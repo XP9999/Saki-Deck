@@ -1,9 +1,10 @@
 const deck = ['Aislinn Wishart', 'Amae Koromo', 'Atago Hiroe', 'Atarashi Ako', 'Choe Myeonghwa', 'Fukuji Mihoko', 'Hanada Kirame', 'Hao Huiyu', 'Haramura Nodoka', 'Hirose Sumire', 'Ikeda Kana', 'Inoue Jun', 'Iwato Kasumi', 'Jindai Komaki', 'Kajiki Yumi', 'Kanbara Satomi', 'Karijuku Tomoe', 'Kataoka Yuuki','Kosegawa Shiromi', 'Kunihiro Hajime', 'Matano Seiko', 'Matsumi Kuro', 'Matsumi Yuu', 'Maya Yukiko' , 'Megan Davin','Miyanaga Saki', 'Miyanaga Teru','Nanpo Kazue', 'Nelly Virsaladze','Onjouji Toki', 'Oohoshi Awai', 'Ryuumonbuchi Touka','Sagimori Arata', 'Sawamura Tomoki', 'Senoo Kaori', 'Shibuya Takami', 'Shimizudani Ryuuka', 'Someya Mako', 'Takakamo Shizuno', 'Takei Hisa', 'Takimi Haru', 'Toyouko Momoko', 'Usuzawa Sae', 'Usuzumi Hatsumi', 'Yumeno Maho']
+const eastDeck = ['Aislinn Wishart', 'Amae Koromo', 'Atago Hiroe', 'Atarashi Ako', 'Choe Myeonghwa', 'Fukuji Mihoko', 'Hanada Kirame', 'Hao Huiyu', 'Haramura Nodoka', 'Hirose Sumire', 'Ikeda Kana', 'Inoue Jun', 'Iwato Kasumi', 'Jindai Komaki', 'Kajiki Yumi', 'Kanbara Satomi', 'Karijuku Tomoe','Kosegawa Shiromi', 'Kunihiro Hajime', 'Matano Seiko', 'Matsumi Kuro', 'Matsumi Yuu', 'Maya Yukiko' , 'Megan Davin','Miyanaga Saki', 'Miyanaga Teru','Nelly Virsaladze','Onjouji Toki', 'Oohoshi Awai', 'Ryuumonbuchi Touka','Sagimori Arata', 'Sawamura Tomoki', 'Senoo Kaori', 'Shibuya Takami', 'Shimizudani Ryuuka', 'Someya Mako', 'Takakamo Shizuno', 'Takei Hisa', 'Takimi Haru', 'Toyouko Momoko', 'Usuzawa Sae', 'Usuzumi Hatsumi', 'Yumeno Maho']
 const imglinks ={
     'Aislinn Wishart':"https://i.imgur.com/6dVKOjr.png",
     'Amae Koromo':"https://i.imgur.com/VGZDXsz.png",
     'Atago Hiroe':"https://i.imgur.com/s8kiJkt.png",
-    'Atarashi Ako':"https://i.imgur.com/s8kiJkt.png",
+    'Atarashi Ako': "https://i.imgur.com/Bkvmsac.png",
     'Choe Myeonghwa':"https://i.imgur.com/q6JLuOO.png",
     'Fukuji Mihoko':"https://i.imgur.com/Qc6rQo7.png",
     'Hanada Kirame':"https://i.imgur.com/5C85O4n.png",
@@ -46,25 +47,86 @@ const imglinks ={
     'Usuzumi Hatsumi':"https://i.imgur.com/e1M5DSq.png",
     'Yumeno Maho':"https://i.imgur.com/NxbBN47.png"
 }
-let currentDeck = [...deck]
+let round = "hanchan"
+let pCount = "suuma"
+let embedCard = false
+let gamemode = document.getElementsByClassName("gamemode")[0]
+const sanmaHand = {East:[],South:[],West:[]}
+const suumaHand = {East:[],South:[],West:[],North:[]}
+let selectedHand = JSON.parse(JSON.stringify(suumaHand))
+let selectedDeck = [...deck]
+let ranInt
+let currentDeck = [...selectedDeck]
 let empty = []
 let mahoHand =  []
 let mahoDiscard = []
 var NOC , discardCard
 let discardpile = []
 let check = false
-let ranInt
-let hands = {East:[],South:[],West:[],North:[]}
+let hands = JSON.parse(JSON.stringify(selectedHand))
 let returnMode = false
 let copypasta = document.getElementsByClassName("copypasta")[0]
 let c = document.getElementsByClassName("copypasta")[0].children
 let cards = document.getElementsByClassName("cards")
 
+function openGamemode(){
+    gamemode.style.display = "flex"
+}
+function tonpuusen(){
+    round = 'tonpuusen'
+}
+
+function hanchan(){
+    round = "hanchan"
+}
+
+function suuma(){
+    pCount = "suuma"
+}
+
+function sanma(){
+    pCount = 'sanma'
+}
+
+function embedCardCheck(){
+    if(embedCard){
+        embedCard = false
+        document.getElementsByClassName("embedCards")[0].style.background = "transparent"
+        
+    }
+    else{
+        embedCard = true
+        document.getElementsByClassName("embedCards")[0].style.background = "#808080"
+    }
+}
+function confirm(){
+    if(round == "tonpuusen"){
+        selectedDeck = [...eastDeck]
+    }
+    if(round == "hanchan"){
+        selectedDeck = [...deck]
+    }
+    if(pCount == "suuma"){
+        selectedHand = JSON.parse(JSON.stringify(suumaHand))
+    }
+    if(pCount == "sanma"){
+        selectedHand = JSON.parse(JSON.stringify(sanmaHand))
+    }
+    currentDeck = [...selectedDeck]
+    hands = JSON.parse(JSON.stringify(selectedHand))
+    gamemode.style.display = "none"
+    updateText();
+}
+
+function back(){
+    gamemode.style.display = "none"
+}
+
 function deal(){
     for(let x in hands){
         for(let g = 0 ; g < NOC ; g++){
             ranInt = Math.floor(Math.random() * currentDeck.length);
-            if(currentDeck[ranInt] == undefined){
+            if(currentDeck[0] == undefined){
                 return
             }
             hands[x].push(currentDeck[ranInt])
@@ -76,7 +138,7 @@ function deal(){
 function draw(x){
     
     ranInt = Math.floor(Math.random() * currentDeck.length);
-    if(currentDeck[ranInt] == undefined){
+    if(currentDeck[0] == undefined){
         return
     }
     hands[x].push(currentDeck[ranInt]);
@@ -101,9 +163,8 @@ function draww(x){
 
 function reset(){
     if(check){
-        currentDeck = [...deck] ; 
-        discardpile = []
-        hands = {East:[],South:[],West:[],North:[]}
+        currentDeck = [...selectedDeck] 
+        hands = JSON.parse(JSON.stringify(selectedHand))
         mahoHand =  []
         mahoDiscard = []
         document.getElementsByClassName('resetDeck')[0].style.background = "transparent"
@@ -114,8 +175,8 @@ function reset(){
         check = true
         document.getElementsByClassName('resetDeck')[0].style.background = "#808080"
     }
-}
 
+}
 
 function returnSwitch(){
     if(returnMode){
@@ -141,7 +202,6 @@ function returning(lmao){
                 }
             }
         }
-        lmao.target.remove();
         updateText();
     }
 }
@@ -154,18 +214,17 @@ function returnAll(){
                 
             }
         }
-    hands = {East:[],South:[],West:[],North:[]} 
+        hands = JSON.parse(JSON.stringify(selectedHand))
 }
 
 function maho(){
-    
-    if([...mahoHand] != []){
-        mahoDiscard = mahoDiscard.concat(mahoHand)
-        mahoHand = []
-    }
+
+    mahoDiscard = mahoDiscard.concat(mahoHand)
+    mahoHand = []
+
     for(let x = 0 ; x < 2 ; x++){
     ranInt = Math.floor(Math.random() * currentDeck.length);
-    if(currentDeck[ranInt] == undefined){
+    if(currentDeck[0] == undefined){
         return
     }
     mahoHand.push(currentDeck[ranInt]);
@@ -180,7 +239,7 @@ function rushMode(){
                 
             }
         }
-    hands = {East:[],South:[],West:[],North:[]} 
+    hands = JSON.parse(JSON.stringify(selectedHand))
 
     for(let x in hands){
         for(let g = 0 ; g < 2 ; g++){
@@ -190,10 +249,8 @@ function rushMode(){
           currentDeck.splice(ranInt,1)
         }
     }
-    if([...mahoHand] != []){
-        mahoDiscard = mahoDiscard.concat(mahoHand)
-        mahoHand = []
-    }
+    mahoDiscard = mahoDiscard.concat(mahoHand)
+    mahoHand = []
 }
 // despite the name it actually make nodes
 function maketext(){
@@ -205,7 +262,14 @@ function maketext(){
         for(let y of hands[x]){
             let g = imglinks[y]
             let card = document.createElement("div")
-            card.innerHTML = y + ": " + g
+            if(embedCard){
+                card.innerHTML += y + ": <" 
+                card.innerHTML += g 
+                card.innerHTML += ">"
+            }
+            else{
+                card.innerHTML += y + ": " + g
+            }
             card.className = "cards"
             copypasta.appendChild(card)
         }
@@ -227,11 +291,31 @@ function mahoInfo(){
         document.getElementsByClassName('mahoDiscarded')[0].appendChild(card)
     }
 }
+
 setInterval(function(){ update() },500);
 
+function gameModeColor(){
+    if(round == "tonpuusen"){
+        document.getElementsByClassName("tonpuusen")[0].style.background = "#808080"
+        document.getElementsByClassName("hanchan")[0].style.background = "transparent"
+    }
+    if(round == "hanchan"){
+        document.getElementsByClassName("hanchan")[0].style.background = "#808080"
+        document.getElementsByClassName("tonpuusen")[0].style.background = "transparent"
+    }
+    if(pCount == "suuma"){
+        document.getElementsByClassName("suuma")[0].style.background = "#808080"
+        document.getElementsByClassName("sanma")[0].style.background = "transparent"
+    }
+    if(pCount == "sanma"){
+        document.getElementsByClassName("sanma")[0].style.background = "#808080"
+        document.getElementsByClassName("suuma")[0].style.background = "transparent"
+    }
+}
 function update(){
         NOC = document.getElementsByClassName("numberOfCards")[0].value;
         selectCard = document.getElementsByClassName('selectCard')[0].value;
+        gameModeColor()
 }
 
 function updateText(){
@@ -245,4 +329,3 @@ function updateText(){
         check = false
     
 }
-
