@@ -1,8 +1,8 @@
 const deck = ['Aislinn Wishart', 'Amae Koromo', 'Atago Hiroe', 'Atarashi Ako', 'Choe Myeonghwa', 'Fukuji Mihoko', 'Hanada Kirame', 'Hao Huiyu', 'Haramura Nodoka', 'Hirose Sumire', 'Ikeda Kana', 'Inoue Jun', 'Iwato Kasumi', 'Jindai Komaki', 'Kajiki Yumi', 'Kanbara Satomi', 'Karijuku Tomoe', 'Kataoka Yuuki','Kosegawa Shiromi', 'Kunihiro Hajime', 'Matano Seiko', 'Matsumi Kuro', 'Matsumi Yuu', 'Maya Yukiko' , 'Megan Davin','Miyanaga Saki', 'Miyanaga Teru','Nanpo Kazue', 'Nelly Virsaladze','Onjouji Toki', 'Oohoshi Awai', 'Ryuumonbuchi Touka','Sagimori Arata', 'Sawamura Tomoki', 'Senoo Kaori', 'Shibuya Takami', 'Shimizudani Ryuuka', 'Someya Mako', 'Takakamo Shizuno', 'Takei Hisa', 'Takimi Haru', 'Toyouko Momoko', 'Usuzawa Sae', 'Usuzumi Hatsumi', 'Yumeno Maho']
 const eastDeck = ['Aislinn Wishart', 'Amae Koromo', 'Atago Hiroe', 'Atarashi Ako', 'Choe Myeonghwa', 'Fukuji Mihoko', 'Hanada Kirame', 'Hao Huiyu', 'Haramura Nodoka', 'Hirose Sumire', 'Ikeda Kana', 'Inoue Jun', 'Iwato Kasumi', 'Jindai Komaki', 'Kajiki Yumi', 'Kanbara Satomi', 'Karijuku Tomoe','Kosegawa Shiromi', 'Kunihiro Hajime', 'Matano Seiko', 'Matsumi Kuro', 'Matsumi Yuu', 'Maya Yukiko' , 'Megan Davin','Miyanaga Saki', 'Miyanaga Teru','Nelly Virsaladze','Onjouji Toki', 'Oohoshi Awai', 'Ryuumonbuchi Touka','Sagimori Arata', 'Sawamura Tomoki', 'Senoo Kaori', 'Shibuya Takami', 'Shimizudani Ryuuka', 'Someya Mako', 'Takakamo Shizuno', 'Takei Hisa', 'Takimi Haru', 'Toyouko Momoko', 'Usuzawa Sae', 'Usuzumi Hatsumi', 'Yumeno Maho']
 const imglinks ={
-    'Aislinn Wishart':"https://i.imgur.com/6dVKOjr.png",
-    'Amae Koromo':"https://i.imgur.com/VGZDXsz.png",
+    'Aislinn Wishart':"https://i.imgur.com/CvtF8qo.png",
+    'Amae Koromo':"https://i.imgur.com/DQgpfCT.png",
     'Atago Hiroe':"https://i.imgur.com/s8kiJkt.png",
     'Atarashi Ako': "https://i.imgur.com/Bkvmsac.png",
     'Choe Myeonghwa':"https://i.imgur.com/q6JLuOO.png",
