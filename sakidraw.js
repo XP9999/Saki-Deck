@@ -21,7 +21,7 @@ const imglinks ={
     'Kataoka Yuuki':"https://i.imgur.com/jpFNamF.png",
     'Kosegawa Shiromi':"https://i.imgur.com/tCxELMs.png",
     'Kunihiro Hajime':"https://i.imgur.com/43V7dxO.png",
-    'Matano Seiko':"https://i.imgur.com/28Uyhz0.png",
+    'Matano Seiko':"https://i.imgur.com/AsSo0nL.png",
     'Matsumi Kuro':"https://i.imgur.com/c5bAPo6.png",
     'Matsumi Yuu':"https://i.imgur.com/7zefXpd.png",
     'Maya Yukiko':"https://i.imgur.com/0x1euJx.png",
