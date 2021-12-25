@@ -18,7 +18,7 @@ const imglinks ={
     'Inoue Jun':"https://i.imgur.com/h9gY0Pd.png",
     'Iwato Kasumi':"https://i.imgur.com/SJ5vOfW.png",
     'Jindai Komaki':"https://i.imgur.com/oXspvUX.png",
-    'Kainou Yoshiko':"https://i.imgur.com/KQmINJi.png",
+    'Kainou Yoshiko':"https://i.imgur.com/hreZd5v.png",
     'Kajiki Yumi':"https://i.imgur.com/bGZBM7y.png",
     'Kakura Kurumi':"https://i.imgur.com/10N6PU3.png",
     'Kanbara Satomi':"https://i.imgur.com/gy6qkfa.png",
